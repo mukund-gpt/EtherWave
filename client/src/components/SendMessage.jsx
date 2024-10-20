@@ -1,7 +1,7 @@
-import { ethers } from "hardhat";
+import { ethers } from "ethers";
 import React, { useState } from "react";
 
-const SendMessage = () => {
+const SendMessage = ({ state }) => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
@@ -10,7 +10,7 @@ const SendMessage = () => {
 
     const { contract } = state;
     console.log(name, message, contract);
-    const amount = { value: ethers.utils.parseEther("0.000001") };
+    const amount = { value: ethers.utils.parseEther("0.000000001") };
 
     try {
       const transaction = await contract.buyChai(name, message, amount);
