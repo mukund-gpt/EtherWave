@@ -2,11 +2,9 @@ import { ethers } from "ethers";
 import DChatAppAbi from "./contracts/DChatApp.json";
 
 const contractAddress = "0xb0B08Ec1610f14743b73CAcF371EF0BCD05b7cb5";
-// transactionHash=0xd64a898c8e04c22092539421c09c60b8bf1cf568db1ca8f36acf269346cc7211
+
 export const getContract = async () => {
   if (window.ethereum) {
-    // const provider = new ethers.providers.BrowserProvider(window.ethereum);
-
     const provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = await provider.getSigner();
@@ -27,9 +25,7 @@ export const sendMessage = async (receiver, content) => {
   try {
     const contract = await getContract();
     if (!contract) {
-      console.error(
-        "Contract not found. Make sure you are connected to MetaMask."
-      );
+      console.error("Contract not found");
       return;
     }
     const tx = await contract.sendMessage(receiver, content);

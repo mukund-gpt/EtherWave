@@ -81,6 +81,7 @@ function App() {
                 <p className="text-xs text-gray-500">
                   {new Date(Number(msg.timestamp) * 1000).toLocaleString()}
                 </p>
+                <div>{console.log(msg)}</div>
               </div>
             ))
           ) : (
